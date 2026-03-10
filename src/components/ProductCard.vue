@@ -22,16 +22,16 @@
 <template>
     <article class="product-card">
         <header class="product-card__header">
-            <h2>{{ product.name }}</h2>
-            <p>Categoria: {{ product.category.title }}</p>
+            <h2 class="product-card__name">{{ product.name }}</h2>
+            <p class="product-card__category">Categoria: {{ product.category.title }}</p>
         </header>
 
         <div class="product-card__body">
-            <p>Preço: <strong>${{ product.price.toFixed(2) }}</strong></p>
+            <p class="product-card__price">Preço: <strong>${{ product.price.toFixed(2) }}</strong></p>
         </div>
 
         <footer class="product-card__footer">
-            <button @click="handleAdd">Adicionar</button>
+            <button class="product-card__btn" @click="handleAdd">Adicionar</button>
         </footer>
     </article>
 </template>
