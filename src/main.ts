@@ -6,6 +6,11 @@ import Aura from '@primevue/themes/aura'
 import 'primeicons/primeicons.css'
 import './assets/main.css'
 
+import DataView from 'primevue/dataview'
+import InputNumber from 'primevue/inputnumber'
+import Button from 'primevue/button'
+import Tooltip from 'primevue/tooltip' 
+
 const app = createApp(App)
 
 app.use(router)
@@ -17,5 +22,10 @@ app.use(PrimeVue, {
     }
   }
 })
+
+app.component('DataView', DataView)
+app.component('InputNumber', InputNumber)
+app.component('Button', Button)
+app.directive('tooltip', Tooltip)
 
 app.mount('#app')
