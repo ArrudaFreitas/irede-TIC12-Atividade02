@@ -6,38 +6,19 @@
 
     export default defineComponent({
         name: 'App',
-
         components: {
-            ProductCard
+            ProductCard,
         },
-
         data() {
             return {
                 products: [
-                    {
-                        id: 1,
-                        name: 'Notebook',
-                        price: 3500,
-                        category: { id: 1, title: 'Eletrônicos' }
-                    },
-                    {
-                        id: 2,
-                        name: 'Mouse',
-                        price: 150,
-                        category: { id: 1, title: 'Eletrônicos' }
-                    },
-                    {
-                        id: 3,
-                        name: 'Teclado',
-                        price: 280,
-                        category: { id: 1, title: 'Eletrônicos' }
-                    }
+                    { id: 1, name: 'Notebook', price: 3500, category: { id: 1, title: 'Eletrônicos' } },
+                    { id: 2, name: 'Mouse', price: 150, category: { id: 1, title: 'Eletrônicos' } },
+                    { id: 3, name: 'Teclado', price: 280, category: { id: 1, title: 'Eletrônicos' } },
                 ] as Product[],
-
-                cart: new Cart()
+                cart: new Cart(),
             }
         },
-
         methods: {
             addToCart(product: Product) {
                 this.cart.addItem(product)
@@ -47,17 +28,17 @@
             },
             removeItem(productId: number) {
                 this.cart.removeItem(productId)
-            }
-        }
+            },
+        },
     })
 </script>
 
 <template>
-    <main class="app">
+    <main class="min-h-screen bg-surface-50 p-6">
 
-        <section class="products">
-            <h1 class="products__title">Produtos</h1>
-            <div class="products__grid">
+        <section class="mb-10">
+            <h1 class="text-3xl font-bold text-surface-800 mb-6">Produtos</h1>
+            <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
                 <ProductCard v-for="product in products" :key="product.id" :product="product"
                     @add-to-cart="addToCart" />
             </div>
@@ -65,7 +46,6 @@
 
         <section class="cart">
             <h2 class="cart__title">Carrinho</h2>
-
             <ul class="cart__list">
                 <li class="cart__item" v-for="item in cart.items" :key="item.product.id">
                     <span class="cart__item-name">{{ item.product.name }}</span>
@@ -76,7 +56,6 @@
                         @click="removeItem(item.product.id)">🗑</button>
                 </li>
             </ul>
-
             <footer class="cart__footer">
                 <p class="cart__total-units">Total de itens: {{ cart.totalUnits }}</p>
                 <p class="cart__total-price">Preço final: R$ {{ cart.totalPrice.toFixed(2) }}</p>
